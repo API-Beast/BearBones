@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Shaders/dither4x4.png" type="Texture" id=1]
+[ext_resource path="res://Widgets/Misc/DitherPreview.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D dither_sampler;
+uniform float dither_strength;
+uniform int num_colors;
+
+void fragment()
+{
+	vec3 ofs = texture(dither_sampler, SCREEN_UV / (SCREEN_PIXEL_SIZE * vec2(textureSize(dither_sampler, 0)))).rgb;
+	ofs -= 0.5;
+	ofs *= dither_strength;
+	float grad = ceil((UV.x + ofs.r) * float(num_colors) - 0.5) / float(num_colors);
+	COLOR = vec4(grad, grad, grad, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/dither_strength = 0.0
+shader_param/num_colors = 6
+shader_param/dither_sampler = ExtResource( 1 )
+_sections_unfolded = [ "Resource", "shader_param" ]
+
+[node name="DitherPreview" type="ColorRect"]
+
+material = SubResource( 2 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 178.0
+margin_right = 274.0
+margin_bottom = 219.0
+rect_min_size = Vector2( 0, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Rect" ]
+
+

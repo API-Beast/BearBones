@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Widgets/Menu/PopupMenu.gd" type="Script" id=1]
+[ext_resource path="res://Theme/box_inline.tres" type="StyleBox" id=2]
+[ext_resource path="res://Theme/subtree_hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://Theme/box_inline_gray.tres" type="StyleBox" id=4]
+[ext_resource path="res://Theme/text_style_label.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Theme/text_style_label_italic.tres" type="DynamicFont" id=6]
+
+[sub_resource type="StyleBoxLine" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+color = Color( 0.308594, 0.308594, 0.308594, 0.541451 )
+grow = 1.0
+thickness = 1
+vertical = false
+
+[node name="PopupMenu" type="PopupPanel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 144.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Popup", "Rect", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_styles" ]
+bg_box = ExtResource( 2 )
+hover_box = ExtResource( 3 )
+header_box = ExtResource( 4 )
+seperator_box = SubResource( 1 )
+header_font = ExtResource( 5 )
+label_font = ExtResource( 6 )
+
+[node name="Entries" type="VBoxContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 0
+alignment = 1
+_sections_unfolded = [ "Material", "Mouse", "Size Flags", "Theme", "custom_constants" ]
+
+[node name="Spacer1" type="Control" parent="Entries" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 16.0
+margin_right = 137.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 4 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect" ]
+
+[node name="Spacer2" type="Control" parent="Entries" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 137.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 4 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Mouse", "Rect", "Size Flags" ]
+
+

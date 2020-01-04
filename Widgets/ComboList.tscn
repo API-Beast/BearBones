@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Widgets/ComboList.gd" type="Script" id=1]
+[ext_resource path="res://Theme/subtree_selected.tres" type="StyleBox" id=2]
+[ext_resource path="res://Theme/subtree_hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://Theme/text_style_label.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Theme/gui/item/folder_closed.png" type="Texture" id=5]
+[ext_resource path="res://Theme/gui/item/folder_open.png" type="Texture" id=6]
+
+[node name="ComboList" type="Control"]
+margin_right = 117.0
+margin_bottom = 94.0
+mouse_filter = 1
+script = ExtResource( 1 )
+box_selection = ExtResource( 2 )
+box_hover = ExtResource( 3 )
+font_label = ExtResource( 4 )
+icon_collapsed = ExtResource( 5 )
+icon_expanded = ExtResource( 6 )

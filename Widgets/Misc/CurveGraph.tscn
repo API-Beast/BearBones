@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Widgets/Misc/CurveGraph.gd" type="Script" id=1]
+
+[node name="CurveGraph" type="Control"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1198.0
+margin_bottom = 102.0
+rect_clip_content = true
+script = ExtResource( 1 )
+antiAliased = false
+min_val = -0.2
+max_val = 1.2

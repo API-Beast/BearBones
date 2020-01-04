@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Widgets/ComboList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Framework/Components/Navigation/DirectoryList.gd" type="Script" id=2]
+
+[node name="ComboList" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+directory = ""
+icon_palette = null
+icon_image = null
+icon_folder = null
+icon_file = null
+icon_add = null
+
+

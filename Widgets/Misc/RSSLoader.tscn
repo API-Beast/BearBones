@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Widgets/Misc/RSSLoader.gd" type="Script" id=1]
+[ext_resource path="res://Theme/text_style_label.tres" type="DynamicFont" id=2]
+
+[node name="RSSLoader" type="VBoxContainer"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 774.0
+margin_bottom = 740.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+alignment = 0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Margin", "Size Flags", "Theme", "custom_constants" ]
+url = "https://steamcommunity.com/games/233450/rss/"
+item_limit = 4
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." index="0"]
+
+download_file = ""
+use_threads = true
+body_size_limit = -1
+max_redirects = 8
+
+[node name="Label" type="Label" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 774.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Loading..."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
+
+

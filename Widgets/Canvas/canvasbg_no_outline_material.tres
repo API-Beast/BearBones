@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Shaders/canvas_bg_simple.shader" type="Shader" id=1]
+
+[resource]
+
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/evenColor = Color( 0.441406, 0.427612, 0.427612, 1 )
+shader_param/oddColor = Color( 0.339203, 0.359135, 0.371094, 1 )
+shader_param/gridColor = Color( 0, 0, 1, 1 )
+shader_param/outlineColor = null
+shader_param/rectSize = Vector2( 1024, 1024 )
+shader_param/virtualSize = null
+shader_param/checkersSize = Vector2( 8, 8 )
+shader_param/anchor = null
+shader_param/gridSize = Vector2( 32, 32 )
+shader_param/drawGrid = false
+_sections_unfolded = [ "Resource", "shader_param" ]
+

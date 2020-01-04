@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Widgets/UserInput/SliderBox.gd" type="Script" id=1]
+[ext_resource path="res://Theme/input_sliderbox.tres" type="StyleBox" id=2]
+[ext_resource path="res://Theme/misc_accent_fill.tres" type="StyleBox" id=3]
+[ext_resource path="res://Theme/text_style_label.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Theme/text_style_number_input.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.431373 )
+border_width_left = 2
+border_width_right = 2
+border_color = Color( 0, 0, 0, 0.568627 )
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="SliderBox" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1133.0
+margin_bottom = -782.0
+rect_min_size = Vector2( 61, 18 )
+focus_mode = 2
+custom_constants/separation = 0
+script = ExtResource( 1 )
+value = 80.0
+ratio = 0.8
+box = ExtResource( 2 )
+fill = ExtResource( 3 )
+soft_limits = SubResource( 2 )
+
+[node name="Padding" type="Control" parent="."]
+margin_right = 4.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 4, 0 )
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 4.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 63.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 24, 0 )
+focus_mode = 0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/selection_color = Color( 0.339844, 0.0730133, 0.0730133, 1 )
+custom_colors/cursor_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_selected = Color( 1, 0.761719, 0.761719, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_constants/minimum_spaces = 0
+text = " 80"
+align = 1
+max_length = 15
+focus_mode = 0
+
+[node name="Padding2" type="Control" parent="."]
+margin_left = 63.0
+margin_right = 67.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 4, 0 )
+mouse_filter = 2
+[connection signal="text_entered" from="LineEdit" to="." method="text_edited"]

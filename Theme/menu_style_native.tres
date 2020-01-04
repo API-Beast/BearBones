@@ -1,0 +1,65 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Theme/text_style_text.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxLine" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+color = Color( 0.910156, 0.910156, 0.910156, 1 )
+grow = 0.0
+thickness = 1
+vertical = false
+_sections_unfolded = [ "Content Margin" ]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 1, 1, 1, 1 )
+draw_center = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.729412, 0.729412, 0.729412, 1 )
+border_blend = false
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+corner_detail = 8
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+shadow_color = Color( 0, 0, 0, 0.182314 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Border", "Border Width", "Corner Radius", "Expand Margin", "Shadow" ]
+
+[resource]
+
+default_font = ExtResource( 1 )
+HSeparator/constants/separation = 4
+HSeparator/styles/separator = SubResource( 1 )
+Label/colors/font_color = Color( 0, 0, 0, 0.861882 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 1 )
+Label/styles/normal = null
+Panel/styles/panel = SubResource( 2 )
+Panel/styles/panelf = null
+Panel/styles/panelnc = null
+PanelContainer/styles/panel = SubResource( 2 )
+PopupPanel/styles/panel = SubResource( 2 )
+_sections_unfolded = [ "HSeparator", "HSeparator/constants", "HSeparator/styles", "Label", "Label/colors", "Label/constants", "Label/fonts", "Label/styles", "Panel", "Panel/styles", "PanelContainer", "PanelContainer/styles", "PopupPanel", "PopupPanel/styles" ]
+

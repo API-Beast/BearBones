@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=godot_windows_64_release.exe
+SaveAs=executables/App_windows_64_release.exe
+Log=21_rh_log_release.txt
+[COMMANDS]
+-addoverwrite 21_VersionInfo.res ,,
+-addoverwrite app.ico ICONGROUP,GODOT_ICON,0

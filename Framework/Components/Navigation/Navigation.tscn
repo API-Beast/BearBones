@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Theme/box_navigation.tres" type="StyleBox" id=1]
+[ext_resource path="res://Framework/Components/Navigation/Navigation.gd" type="Script" id=2]
+[ext_resource path="res://Widgets/DockPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Theme/subtree_header.tres" type="StyleBox" id=4]
+[ext_resource path="res://Theme/box_collapsible.tres" type="StyleBox" id=5]
+[ext_resource path="res://Widgets/TaskStatus.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Theme/gui/item/file_document.png" type="Texture" id=7]
+[ext_resource path="res://Theme/gui/item/file_image.png" type="Texture" id=8]
+[ext_resource path="res://Theme/gui/item/file_folder.png" type="Texture" id=9]
+[ext_resource path="res://Theme/gui/item/file.png" type="Texture" id=10]
+[ext_resource path="res://Theme/gui/icon/add.png" type="Texture" id=11]
+[ext_resource path="res://Framework/Components/Navigation/DirectoryList.tscn" type="PackedScene" id=12]
+
+[node name="Navigation" type="Panel"]
+anchor_bottom = 1.0
+margin_top = 20.0
+margin_right = 250.0
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="Docks" type="VBoxContainer" parent="Margin"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 242.0
+margin_bottom = 772.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="DirectoryDock" parent="Margin/Docks" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 234.0
+margin_bottom = 764.0
+label = "C:/Docs/ColorTool"
+collapsible = true
+collapsed = false
+row_height = 18
+box_header = ExtResource( 4 )
+box_panel = ExtResource( 5 )
+
+[node name="DirectoryList" parent="Margin/Docks/DirectoryDock" instance=ExtResource( 12 )]
+margin_top = 20.0
+margin_right = 234.0
+margin_bottom = 764.0
+seperation = 4
+icon_palette = ExtResource( 7 )
+icon_image = ExtResource( 8 )
+icon_folder = ExtResource( 9 )
+icon_file = ExtResource( 10 )
+icon_add = ExtResource( 11 )
+
+[node name="Notifications" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -145.0
+margin_right = 1.0
+margin_bottom = -17.0
+mouse_filter = 2
+alignment = 2
+
+[node name="TaskStatus" parent="Notifications" instance=ExtResource( 6 )]
+margin_left = 29.0
+margin_top = 81.0
+margin_right = 221.0
+margin_bottom = 128.0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+visibility_time_out = 0.0

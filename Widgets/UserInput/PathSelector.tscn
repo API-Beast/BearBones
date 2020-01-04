@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Widgets/UserInput/PathSelector.gd" type="Script" id=1]
+[ext_resource path="res://Theme/gui/icon/warning.png" type="Texture" id=2]
+[ext_resource path="res://Theme/gui/icon/information.png" type="Texture" id=3]
+[ext_resource path="res://Theme/input_line_edit_button_hover.tres" type="StyleBox" id=4]
+[ext_resource path="res://Theme/input_line_edit_button_pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://Theme/input_line_edit_button.tres" type="StyleBox" id=6]
+[ext_resource path="res://Theme/gui/item/folder_open.png" type="Texture" id=7]
+[ext_resource path="res://Theme/button_accent_hover.tres" type="StyleBox" id=8]
+[ext_resource path="res://Theme/button_accent_pressed.tres" type="StyleBox" id=9]
+[ext_resource path="res://Theme/button_basic.tres" type="StyleBox" id=10]
+[ext_resource path="res://Theme/button_accent.tres" type="StyleBox" id=11]
+[ext_resource path="res://Theme/gui/item/file_folder.png" type="Texture" id=12]
+
+[node name="PathSelector" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+size_flags_vertical = 4
+script = ExtResource( 1 )
+icon_warning = ExtResource( 2 )
+icon_info = ExtResource( 3 )
+options = {
+
+}
+
+[node name="Entry" type="HBoxContainer" parent="."]
+margin_right = 1200.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Entry"]
+margin_top = 5.0
+margin_right = 34.0
+margin_bottom = 19.0
+text = "Label"
+
+[node name="LineEdit" type="LineEdit" parent="Entry"]
+margin_left = 38.0
+margin_right = 1174.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+caret_blink = true
+
+[node name="Options" type="Button" parent="Entry/LineEdit"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+icon = ExtResource( 7 )
+
+[node name="SelectorButton" type="Button" parent="Entry"]
+margin_left = 1178.0
+margin_right = 1200.0
+margin_bottom = 24.0
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 11 )
+icon = ExtResource( 12 )
+
+[node name="Message" type="HBoxContainer" parent="."]
+visible = false
+margin_top = 28.0
+margin_right = 1200.0
+margin_bottom = 44.0
+size_flags_horizontal = 5
+
+[node name="Icon" type="TextureRect" parent="Message"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Message"]
+margin_left = 20.0
+margin_top = 1.0
+margin_right = 20.0
+margin_bottom = 15.0

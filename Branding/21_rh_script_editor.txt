@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=godot.exe
+SaveAs=executables/App_editor.exe
+Log=21_rh_log.txt
+[COMMANDS]
+-addoverwrite 21_VersionInfo.res ,,
+-addoverwrite app.ico ICONGROUP,GODOT_ICON,0

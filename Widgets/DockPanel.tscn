@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Widgets/DockPanel.gd" type="Script" id=1]
+[ext_resource path="res://Theme/gui/item/folder_closed.png" type="Texture" id=2]
+[ext_resource path="res://Theme/gui/item/folder_open.png" type="Texture" id=3]
+[ext_resource path="res://Theme/misc_accent_fill.tres" type="StyleBox" id=4]
+[ext_resource path="res://Theme/box_dock.tres" type="StyleBox" id=5]
+[ext_resource path="res://Theme/text_style_label.tres" type="DynamicFont" id=6]
+
+[node name="DockPanel" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -958.0
+margin_bottom = -627.0
+size_flags_vertical = 3
+custom_constants/margin_right = 0
+custom_constants/margin_top = 20
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+script = ExtResource( 1 )
+icon_collapsed = ExtResource( 2 )
+icon_expanded = ExtResource( 3 )
+box_header = ExtResource( 4 )
+box_panel = ExtResource( 5 )
+font_label = ExtResource( 6 )
+
+[node name="_Scroll" type="ScrollContainer" parent="."]
+margin_top = 20.0
+margin_right = 242.0
+margin_bottom = 173.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="_Content" type="MarginContainer" parent="_Scroll"]
+margin_right = 242.0
+margin_bottom = 153.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="_Tween" type="Tween" parent="."]
+playback_process_mode = 0

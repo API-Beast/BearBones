@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Widgets/UserInput/Vector2Slider.gd" type="Script" id=1]
+[ext_resource path="res://Theme/gui/misc/input_chained.png" type="Texture" id=2]
+[ext_resource path="res://Theme/gui/misc/input_unchained.png" type="Texture" id=3]
+[ext_resource path="res://Widgets/UserInput/SliderBox.tscn" type="PackedScene" id=4]
+
+[node name="Vector2Slider" type="HBoxContainer"]
+margin_left = 73.0
+margin_top = 28.0
+margin_right = 191.0
+margin_bottom = 67.0
+custom_constants/separation = 4
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 12.0
+margin_right = 41.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+text = "Vector"
+align = 1
+
+[node name="Chain" type="TextureButton" parent="."]
+margin_left = 45.0
+margin_top = 6.0
+margin_right = 53.0
+margin_bottom = 33.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+stretch_mode = 3
+
+[node name="Sliders" type="VBoxContainer" parent="."]
+margin_left = 57.0
+margin_right = 118.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+custom_constants/separation = 1
+
+[node name="X" parent="Sliders" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 61.0
+margin_bottom = 18.0
+text = ""
+min_value = 2.0
+max_value = 128.0
+soft_min = -99999.9
+soft_max = 99999.9
+step = 1.0
+value = 5.0
+ratio = 0.0238095
+curve_shape = 1.0
+show_sign = false
+force_step = true
+integer_input = false
+reverse_direction = false
+
+[node name="Y" parent="Sliders" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 19.0
+margin_right = 61.0
+margin_bottom = 37.0
+text = ""
+min_value = 2.0
+max_value = 128.0
+soft_min = -99999.9
+soft_max = 99999.9
+step = 1.0
+value = 5.0
+ratio = 0.0238095
+curve_shape = 1.0
+show_sign = false
+force_step = true
+integer_input = false
+reverse_direction = false
