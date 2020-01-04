@@ -20,7 +20,7 @@ signal on_open_tabs_changed()
 var document_interface = null setget set_document_interface
 var application_interfaces = []
 
-const NAME = "TileMaker"
+const NAME = "BearBones"
 const VERSION = "Alpha"
 
 var slow_tick_timer = null

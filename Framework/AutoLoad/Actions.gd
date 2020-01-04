@@ -7,25 +7,6 @@ var current_action = null
 var queued_actions = []
 
 func _ready():
-	register_placeholder_action("ConfirmAction", "Confirm")
-
-	register_placeholder_action("AddToSelection", "Add To Selection", [InputEventMouseButton, BUTTON_LEFT, KEY_MASK_SHIFT])
-	register_placeholder_action("Select", "Select", [InputEventMouseButton, BUTTON_LEFT])
-	register_placeholder_action("AbortAction", "Abort", [InputEventKey, KEY_ESCAPE])
-	register_placeholder_action("OpenContext", "Open Context Menu", [InputEventMouseButton, BUTTON_RIGHT])
-	register_placeholder_action("Delete", "Delete", [InputEventKey, KEY_DELETE], [InputEventKey, KEY_BACKSPACE])
-
-	register_placeholder_action("ZoomInFine", "Zoom In (Fine)", [InputEventMouseButton, BUTTON_WHEEL_UP])
-	register_placeholder_action("ZoomOutFine", "Zoom Out (Fine)", [InputEventMouseButton, BUTTON_WHEEL_DOWN])
-
-	register_placeholder_action("ZoomInUI", "UI-Zoom In", [InputEventKey, KEY_KP_ADD, KEY_MASK_CTRL])
-	register_placeholder_action("ZoomOutUI", "UI-Zoom Out", [InputEventKey, KEY_KP_SUBTRACT, KEY_MASK_CTRL])
-	
-	register_placeholder_action("ZoomIn", "Zoom In", [InputEventKey, KEY_KP_ADD])
-	register_placeholder_action("ZoomOut", "Zoom Out", [InputEventKey, KEY_KP_SUBTRACT])
-
-	register_placeholder_action("MoveCanvas", "Move Canvas", [InputEventMouseButton, BUTTON_MIDDLE], [InputEventKey, KEY_SPACE])
-
 	self.config = Config.load_config_file("user://actions.json", {})
 
 func find_triggered_action(e):

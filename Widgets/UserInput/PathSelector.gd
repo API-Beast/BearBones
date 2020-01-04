@@ -41,15 +41,17 @@ func _init():
 func context_options_menu():
 	var retVal = []
 	retVal.push_back({"type":"header", "text": "Built-In"})
+	# TODO FIXME "icon":IconProvider.get_pattern_icon(options[option], Vector2(32, 32))
 	for option in options.keys():
-		retVal.push_back({"label":option, "value":option, "icon":IconProvider.get_pattern_icon(options[option], Vector2(32, 32)), "icon_size":Vector2(32, 32)})
+		retVal.push_back({"label":option, "value":option, "icon_size":Vector2(32, 32)})
 	return retVal
 
 func context_history_menu():
 	var retVal = []
 	retVal.push_back({"type":"header", "text": "Recently Used"})
+	# TODO FIXME "icon":IconProvider.get_pattern_icon(file, Vector2(32, 32))
 	for file in history:
-		retVal.push_back({"label":file.get_file(), "value":file, "icon":IconProvider.get_pattern_icon(file, Vector2(32, 32)), "icon_size":Vector2(32, 32)})
+		retVal.push_back({"label":file.get_file(), "value":file, "icon_size":Vector2(32, 32)})
 	if history.empty():
 		retVal.push_back({"type":"label", "text": "~No items~"})
 	return retVal

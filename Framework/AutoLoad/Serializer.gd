@@ -1,8 +1,8 @@
 extends Node
 
 class BlockFileReader:
-	var file =: File.new()
-	var error_code =: FAILED
+	var file := File.new()
+	var error_code := FAILED
 
 	func open(path:String)->int:
 		error_code = file.open(path, File.READ)
@@ -12,9 +12,9 @@ class BlockFileReader:
 		if error_code == OK:
 			file.close()
 
-	var sector_start =: 0
-	var sector_length =: 0
-	var sector_end =: 0
+	var sector_start := 0
+	var sector_length := 0
+	var sector_end := 0
 
 	func find_sector(name:String)->bool:
 		if error_code != OK:
@@ -27,6 +27,7 @@ class BlockFileReader:
 				return true
 			if sector == null:
 				return false
+		return false
 
 	func next_sector():
 		if error_code != OK:
@@ -36,7 +37,7 @@ class BlockFileReader:
 			var line := file.get_line()
 			if line.begins_with("SECTION "):
 				var parts := line.split(" ", false, 2)
-				var skip_ahead =: 0
+				var skip_ahead := 0
 				if parts.size() == 3:
 					skip_ahead = parts[2].to_int()
 

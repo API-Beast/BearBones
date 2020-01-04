@@ -47,6 +47,7 @@ func init_socket():
 
 func process_args(args):
 	for arg in args:
+		# TODO FIXME
 		#if FileImport.can_load(arg):
 		if false:
 			print("Opening Tab for file: ", arg)

@@ -42,10 +42,10 @@ func add_feature(mime:String, feature:String)->void:
 		return
 	mime_types[mime].features.push_back(feature)
 
-func add_conversion_routine(from_type, to_type, target, fn:String):
+func add_conversion_routine(from_type, to_type, target, fn:String)->void:
 	var routine = Routine.new()
 	routine.internal_type = from_type
-	routine.target_type = target_type
+	routine.target_type = to_type
 	routine.target = target
 	routine.function = fn
 
@@ -57,7 +57,7 @@ func add_conversion_routine(from_type, to_type, target, fn:String):
 	else:
 		conversion_routines[from_type] = {to_type:routine}
 
-func add_export_routine(mime, type, target, fn:String):
+func add_export_routine(mime, type, target, fn:String)->void:
 	var routine = Routine.new()
 	routine.internal_type = type
 	routine.mime_type = mime
@@ -72,7 +72,7 @@ func add_export_routine(mime, type, target, fn:String):
 	else:
 		export_routines[type] = {mime:routine}
 
-func add_import_routine(mime, type, target, fn:String):
+func add_import_routine(mime, type, target, fn:String)->void:
 	var routine = Routine.new()
 	routine.internal_type = type
 	routine.mime_type = mime
@@ -86,7 +86,7 @@ func add_import_routine(mime, type, target, fn:String):
 
 func get_mime_types_with_features(needed_features:Array)->Array:
 	var viable_types = []
-	for type in types.values():
+	for type in mime_types.values():
 		var viable = true
 		for feature in needed_features:
 			if not type.features.has(feature):
@@ -97,27 +97,27 @@ func get_mime_types_with_features(needed_features:Array)->Array:
 	return viable_types
 
 func get_exportable_as(type)->Array:
-	return 
+	return []
 
 func get_importable_as(type)->Array:
-	pass
+	return []
 
-func generate_filter(types:Array):Array:
-	pass
+func generate_filter(types:Array)->Array:
+	return []
 
-func path_deduce_mime_type(path:String):
+func path_deduce_mime_type(path:String)->String:
 	for type in mime_types.values():
-		for extension in extensions:
+		for extension in type.extensions:
 			if path.match(extension):
 				return type
 	return "auto"
 
-func has_conversion_routine(from, to):
+func has_conversion_routine(from, to)->bool:
 	if conversion_routines.has(from):
 		return conversion_routines[from].has(to)
 	return false
 
-func has_export_routine(internal_type, mime_type):
+func has_export_routine(internal_type, mime_type)->bool:
 	if export_routines.has(internal_type):
 		return export_routines[internal_type].has(mime_type)
 	return false
@@ -153,10 +153,10 @@ func export(obj, path:String, mime:="auto"):
 		mime = type_to_mime_map[type]
 
 	if has_export_routine(type, mime):
-		return export_as(obj, type, mime)
+		return export_as(obj, type, path, mime)
 
 	if has_export_routine(type, mime_types[mime].internal_type):
-		return export_as(obj, mime_types[mime].internal_type, mime)
+		return export_as(obj, mime_types[mime].internal_type, path, mime)
 	
 	printerr("FileRouter Error: Can't export object of type ", Serializer.get_type_name(type), " to file with mimetype ", mime)
 

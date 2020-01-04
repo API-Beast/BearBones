@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Theme/theme_main.tres" type="Theme" id=1]
-[ext_resource path="res://Framework/Global/Dialog.gd" type="Script" id=2]
+[ext_resource path="res://Framework/AutoLoad/Dialog.gd" type="Script" id=2]
 [ext_resource path="res://Widgets/Dialog/File.gd" type="Script" id=3]
 [ext_resource path="res://Widgets/Dialog/SelectPath.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Widgets/Dialog/AssignHotkey.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Widgets/Dialog/UnsavedChanges.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Widgets/Dialog/UnsavedChanges.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Widgets/Dialog/AssignHotkey.tscn" type="PackedScene" id=6]
 
 [node name="Dialog" type="Control"]
 anchor_right = 1.0
@@ -60,7 +60,7 @@ Your auto saves can be found in \"Help -> Folders -> Auto-Saves\" and can be rec
 
 Details on the cause of the crash can be found in \"Help -> Folders -> Logs\"."
 
-[node name="AssignKey" parent="Templates" instance=ExtResource( 5 )]
+[node name="AssignKey" parent="Templates" instance=ExtResource( 6 )]
 
 [node name="Error" type="AcceptDialog" parent="Templates"]
 anchor_left = 0.5
@@ -79,4 +79,4 @@ margin_top = -77.5
 margin_right = 173.5
 margin_bottom = 77.5
 
-[node name="UnsavedChanges" parent="Templates" instance=ExtResource( 6 )]
+[node name="UnsavedChanges" parent="Templates" instance=ExtResource( 5 )]

@@ -12,6 +12,8 @@ theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="MDI" parent="." instance=ExtResource( 3 )]
+margin_left = -1.0
+margin_right = -1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

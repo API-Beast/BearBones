@@ -19,10 +19,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Framework/Classes/DocumentContext.gd"
 }, {
-"base": "ShardStorage",
+"base": "Node",
 "class": "DocumentInterface",
 "language": "GDScript",
-"path": "res://Framework/Classes/DocumentInterface.gd"
+"path": "res://Framework/Classes/PluginInterface.gd"
 }, {
 "base": "Shard",
 "class": "FloatingShard",
@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Widgets/UserInput/SliderBox.gd"
 }, {
-"base": "ApplicationInterface",
-"class": "TileMakerApplicationInterface",
-"language": "GDScript",
-"path": "res://App/TileMaker/TileMakerApplicationInterface.gd"
-}, {
 "base": "Reference",
 "class": "UndoStack",
 "language": "GDScript",
@@ -74,7 +69,6 @@ _global_script_class_icons={
 "ShardList": "",
 "ShardStorage": "",
 "SliderBox": "",
-"TileMakerApplicationInterface": "",
 "UndoStack": ""
 }
 
@@ -93,20 +87,21 @@ config/icon="res://Icon256x256.png"
 
 [autoload]
 
-Process="*res://Framework/Global/Process.gd"
-Functions="*res://Framework/Global/Functions.gd"
-Serializer="*res://Framework/Global/Serializer.gd"
-Classes="*res://Framework/Global/Classes.gd"
-Config="*res://Framework/Global/Config.gd"
-Session="*res://Framework/Global/Session.gd"
-Dialog="*res://Framework/Global/Dialog.tscn"
-Tasks="*res://Framework/Global/Tasks.tscn"
-Actions="*res://Framework/Global/Actions.gd"
-RecentFiles="*res://Framework/Global/RecentFiles.gd"
-GlobalMenu="*res://Framework/Global/GlobalMenu.gd"
-IconProvider="*res://Framework/Global/IconProvider.gd"
-App="*res://Framework/Global/App.gd"
-TileMaker="*res://App/TileMaker/TileMaker.gd"
+Functions="*res://Framework/AutoLoad/Functions.gd"
+Serializer="*res://Framework/AutoLoad/Serializer.gd"
+Config="*res://Framework/AutoLoad/Config.gd"
+Session="*res://Framework/AutoLoad/Session.gd"
+Dialog="*res://Framework/AutoLoad/Dialog.tscn"
+Tasks="*res://Framework/AutoLoad/Tasks.tscn"
+Actions="*res://Framework/AutoLoad/Actions.gd"
+GlobalMenu="*res://Framework/AutoLoad/GlobalMenu.gd"
+FileRouter="*res://Framework/AutoLoad/FileRouter.gd"
+App="*res://Framework/AutoLoad/App.gd"
+RecentFiles="*res://Framework/AutoLoad/RecentFiles.gd"
+Actions_Setup="*res://Framework/Setup/Actions_Setup.gd"
+Config_Setup="*res://Framework/Setup/Config_Setup.gd"
+FileRouter_Setup="*res://Framework/Setup/FileRouter_Setup.gd"
+Serializer_Setup="*res://Framework/Setup/Serializer_Setup.gd"
 
 [debug]
 
