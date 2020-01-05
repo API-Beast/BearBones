@@ -6,28 +6,28 @@ var visibility_timer = 0.0
 var hide = false
 
 func _ready():
-	Tasks.connect("task_status_changed", self, "update_task")
+	Jobs.connect("job_status_changed", self, "update_task")
 	update_task()
 
 func update_task():
 	if !is_inside_tree():
 		return
 
-	var active = Tasks.num_tasks > 0
+	var active = Jobs.current_jobs.size() > 0
 	if active:
 		self.visible = true
 		hide = false
 		$Layout/AnimationPlayer.current_animation = "Active"
-		$Layout/Label.text = Tasks.tasks.values().front()
+		$Layout/Label.text = Jobs.current_jobs.front()
 	else:
 		hide = true
-		if Tasks.errors.empty():
+		if Jobs.errors.empty():
 			$Layout/AnimationPlayer.current_animation = "Finished"
-			$Layout/Label.text = tr("All Tasks finished.")
+			$Layout/Label.text = tr("All Jobs finished.")
 			visibility_timer = visibility_time_out
 		else:
 			$Layout/AnimationPlayer.current_animation = "Error"
-			$Layout/Label.text = Tasks.errors.back()
+			$Layout/Label.text = Jobs.errors.back()
 			visibility_timer = error_time_out
 
 func _process(dt):

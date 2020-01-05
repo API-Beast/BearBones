@@ -139,10 +139,10 @@ func save_session(path):
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		if Tasks.num_tasks > 0:
+		if Jobs.current_jobs.size():
 			var node = preload("res://Widgets/Dialog/WaitForTask.tscn").instance()
 			Dialog.queue_dialog(node)
-			yield(Tasks, "all_tasks_finished")
+			yield(Jobs, "all_jobs_finished")
 		var date = OS.get_datetime()
 		save_session("exit_{month}_{day}_{hour}_{minute}.clrsession".format(date))
 		get_tree().quit()

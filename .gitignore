@@ -1,3 +1,15 @@
 .import/
-*.exe
 Changelog.md
+
+# Binaries
+*.o
+*.a
+*.os
+*.so
+*.obj
+*.pyc
+*.dblite
+*.pdb
+*.lib
+*.dll
+*.exe
