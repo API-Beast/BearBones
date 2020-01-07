@@ -12,6 +12,8 @@ var intermediate_change := false
 var modified := false
 var has_shard_update := false
 
+var read_only := false
+
 signal on_shard_updated()
 signal on_composition_change()
 signal on_shard_added(shard)

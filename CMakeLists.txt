@@ -3,3 +3,4 @@ project(BearBones)
 
 add_subdirectory(godot-cpp)
 add_subdirectory(GDNative/HelloWorld)
+add_subdirectory(GDNative/Clipboard)
