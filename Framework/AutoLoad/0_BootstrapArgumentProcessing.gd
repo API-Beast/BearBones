@@ -7,10 +7,6 @@ var fast_quit = false
 export var port = 29577
 
 func _init():
-	var hello_world = preload("res://GDNative/HelloWorld.gdns").new()
-	print(hello_world.get_string())
-	hello_world.free()
-
 	var args = OS.get_cmdline_args()
 	init_socket()
 	fast_quit = (socket == null) and args.size() > 0 and not "--new-window" in args

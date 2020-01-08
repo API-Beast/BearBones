@@ -4,3 +4,6 @@
 [submodule "GDNative/Clipboard/clip"]
 	path = GDNative/Clipboard/clip
 	url = git@github.com:dacap/clip.git
+[submodule "GDNative/NativeFileDialog/nativefiledialog-extended"]
+	path = GDNative/NativeFileDialog/nativefiledialog-extended
+	url = git@github.com:btzy/nativefiledialog-extended.git
