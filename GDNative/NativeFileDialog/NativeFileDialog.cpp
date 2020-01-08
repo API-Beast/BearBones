@@ -29,11 +29,17 @@ void NativeFileDialog::_register_methods()
 	default_filters.push_back("Any;*");
 	register_property<NativeFileDialog, PoolStringArray>("filters", &NativeFileDialog::filters, default_filters);
 
+	register_signal<NativeFileDialog>("about_to_show");
 	register_signal<NativeFileDialog>("popup_hide");
-	register_signal<NativeFileDialog>("custom_action");
+	register_signal<NativeFileDialog>("custom_action", "action", GODOT_VARIANT_TYPE_STRING);
 	register_signal<NativeFileDialog>("dir_selected", "dir", GODOT_VARIANT_TYPE_STRING);
 	register_signal<NativeFileDialog>("file_selected", "path", GODOT_VARIANT_TYPE_STRING);
 	register_signal<NativeFileDialog>("files_selected", "paths", GODOT_VARIANT_TYPE_POOL_STRING_ARRAY);
+}
+
+void NativeFileDialog::_init()
+{
+
 }
 
 void NativeFileDialog::show()
@@ -59,12 +65,13 @@ void NativeFileDialog::show()
 		String spec("");
 		for(int i = 0; i < specs.size(); i++)
 		{
-			spec += ",";
+			if(i != 0)
+				spec += ",";
 			spec += specs[i].get_extension();
 		}
 		
 		filter_items[i].spec = spec.alloc_c_string();
-		filter_items[i].name = filters[i].substr(delimiter, filters[i].length()-delimiter).alloc_c_string();
+		filter_items[i].name = filters[i].substr(delimiter + 1, filters[i].length() - delimiter - 1).alloc_c_string();
 	}
 	
 	switch (mode)

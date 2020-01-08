@@ -30,6 +30,7 @@ public:
 	PoolStringArray filters;
 
 	// methods
+	void _init();
 	void show();
 
 	// signals

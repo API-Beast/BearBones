@@ -34,11 +34,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Framework/Classes/InputTrigger.gd"
 }, {
-"base": "Node",
-"class": "NativeFileDialog",
-"language": "NativeScript",
-"path": "res://GDNative/NativeFileDialog.gdns"
-}, {
 "base": "Resource",
 "class": "Shard",
 "language": "GDScript",
@@ -70,7 +65,6 @@ _global_script_class_icons={
 "DocumentInterface": "",
 "FloatingShard": "",
 "InputTrigger": "",
-"NativeFileDialog": "",
 "Shard": "",
 "ShardList": "",
 "ShardStorage": "",
@@ -110,7 +104,7 @@ Config_Setup="*res://Framework/Setup/Config_Setup.gd"
 FileRouter_Setup="*res://Framework/Setup/FileRouter_Setup.gd"
 Serializer_Setup="*res://Framework/Setup/Serializer_Setup.gd"
 Clipboard="*res://GDNative/Clipboard.gdns"
-bootstrap="*res://App/bootstrap.gd"
+bootstrap="*res://App/bootstrap.tscn"
 
 [debug]
 
