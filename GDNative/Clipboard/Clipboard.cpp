@@ -70,10 +70,6 @@ bool Clipboard::has_image()
 
 bool Clipboard::set_image(Ref<Image> img)
 {
-	Image converted;
-	converted.copy_from(img);
-	converted.convert(Image::FORMAT_RGBA8);
-
 	clip::image_spec spec;
 	spec.width = img->get_size().x;
 	spec.height = img->get_size().y;
@@ -87,8 +83,8 @@ bool Clipboard::set_image(Ref<Image> img)
 	spec.green_shift = 8;
 	spec.blue_shift = 16;
 	spec.alpha_shift = 24;
-
-	auto* data = converted.get_data().read().ptr();
+	
+	const auto* data = img->get_data().read().ptr();
 	clip::image clipimg(data, spec);
 	return clip::set_image(clipimg);
 }
