@@ -27,6 +27,7 @@ public:
 	int mode;
 	String current_dir;
 	String current_file;
+	String all_supported_string = "All supported file types...";
 	PoolStringArray filters;
 
 	// methods

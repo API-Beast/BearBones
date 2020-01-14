@@ -21,12 +21,13 @@ void NativeFileDialog::_register_methods()
 {
 	register_method("show", &NativeFileDialog::show);
 
-	register_property<NativeFileDialog, int>("mode", &NativeFileDialog::mode, NativeFileDialog::Mode::MODE_OPEN_ANY);
+	register_property<NativeFileDialog, int>("mode", &NativeFileDialog::mode, NativeFileDialog::Mode::MODE_OPEN_FILE);
 	register_property<NativeFileDialog, String>("current_dir", &NativeFileDialog::current_dir, "");
 	register_property<NativeFileDialog, String>("current_file", &NativeFileDialog::current_file, "");
+	register_property<NativeFileDialog, String>("all_supported_string", &NativeFileDialog::all_supported_string, "All supported file types...");
 
 	PoolStringArray default_filters;
-	default_filters.push_back("Any;*");
+	default_filters.push_back("Any File Type;*");
 	register_property<NativeFileDialog, PoolStringArray>("filters", &NativeFileDialog::filters, default_filters);
 
 	register_signal<NativeFileDialog>("about_to_show");
@@ -55,9 +56,12 @@ void NativeFileDialog::show()
 	if(!current_file.empty()) defaultName = current_file.alloc_c_string();
 
 	const nfdpathset_t* path_set = nullptr;
-	nfdu8filteritem_t* filter_items = new nfdu8filteritem_t[filters.size()];
+	bool include_all_type_filter = (mode != MODE_SAVE_FILE && filters.size()>1);
+	int num_filters = filters.size()+include_all_type_filter;
+	nfdu8filteritem_t* filter_items = new nfdu8filteritem_t[num_filters];
 	nfdresult_t result = NFD_CANCEL;
 
+	String all_spec("");
 	for(int i = 0; i < filters.size(); i++)
 	{
 		int delimiter = filters[i].find_last(";");
@@ -65,13 +69,22 @@ void NativeFileDialog::show()
 		String spec("");
 		for(int i = 0; i < specs.size(); i++)
 		{
-			if(i != 0)
+			if(!spec.empty())
 				spec += ",";
+			if(!all_spec.empty())
+				all_spec += ",";
+
 			spec += specs[i].get_extension();
+			all_spec += specs[i].get_extension();
 		}
 		
-		filter_items[i].spec = spec.alloc_c_string();
-		filter_items[i].name = filters[i].substr(delimiter + 1, filters[i].length() - delimiter - 1).alloc_c_string();
+		filter_items[i+include_all_type_filter].spec = spec.alloc_c_string();
+		filter_items[i+include_all_type_filter].name = filters[i].substr(delimiter + 1, filters[i].length() - delimiter - 1).alloc_c_string();
+	}
+	if(include_all_type_filter)
+	{
+		filter_items[0].spec = all_spec.alloc_c_string();
+		filter_items[0].name = all_supported_string.alloc_c_string();
 	}
 	
 	switch (mode)
@@ -80,21 +93,21 @@ void NativeFileDialog::show()
 	case MODE_OPEN_FILE:
 	case MODE_SAVE_FILE:
 		if(mode == MODE_SAVE_FILE)
-			result = NFD_SaveDialogU8(&outPath, filter_items, filters.size(), defaultPath, defaultName);
+			result = NFD_SaveDialogU8(&outPath, filter_items, num_filters, defaultPath, defaultName);
 		else
-			result = NFD_OpenDialogU8(&outPath, filter_items, filters.size(), defaultPath);
+			result = NFD_OpenDialogU8(&outPath, filter_items, num_filters, defaultPath);
 		
 		if(result == NFD_OKAY)
 		{
 			emit_signal("file_selected", String(outPath));
-			NFD_FreePath(outPath);
+			NFD_FreePathU8(outPath);
 		}
 		else
 			emit_signal("custom_action", "cancel");
 		break;
 	case MODE_OPEN_FILES:
 	{
-		result = NFD_OpenDialogMultipleU8(&path_set, filter_items, filters.size(), defaultPath);
+		result = NFD_OpenDialogMultipleU8(&path_set, filter_items, num_filters, defaultPath);
 
 		PoolStringArray paths;
 		nfdpathsetsize_t count;
@@ -124,7 +137,7 @@ void NativeFileDialog::show()
 		if(result == NFD_OKAY)
 		{
 			emit_signal("dir_selected", String(outPath));
-			NFD_FreePath(outPath);
+			NFD_FreePathU8(outPath);
 		}
 		else
 			emit_signal("custom_action", "cancel");
