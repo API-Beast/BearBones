@@ -39,18 +39,33 @@ func sanitize():
 	pass
 
 # Tracking
-var undo_imprint = {}
-var universal_imprint = {}
+var undo_imprint         := {}
+var universal_imprint    := {}
 
-func store_new_imprint():
+# var tempoary_imprint     := {}
+# var use_tempoary_imprint := false
+
+# func _get(property):
+# 	if use_tempoary_imprint:
+# 		if tempoary_imprint.has(property):
+# 			return tempoary_imprint[property]
+# 	return self.get(property)
+
+# func _set(property, value):
+# 	if use_tempoary_imprint:
+# 		tempoary_imprint[property] = value
+# 	else:
+# 		self.set(property, value)
+
+func store_new_imprint()->Dictionary:
 	undo_imprint = create_imprint()
 	universal_imprint = create_imprint(true)
 	return undo_imprint
 
-func get_undo_imprint():
+func get_undo_imprint()->Dictionary:
 	return undo_imprint
 
-func create_imprint(universal=false):
+func create_imprint(universal=false)->Dictionary:
 	var result = {}
 	if universal:
 		for p in get_property_list():
@@ -62,13 +77,13 @@ func create_imprint(universal=false):
 	result.type = self.get_script()
 	return result
 
-func apply_imprint(undo_imprint):
+func apply_imprint(new_imprint)->void:
 	for name in get_undo_properties():
-		if undo_imprint.has(name):
-			self.set(name, undo_imprint[name])
+		if new_imprint.has(name):
+			self.set(name, new_imprint[name])
 	sanitize()
 
-func apply_universal_imprint(imprint):
+func apply_universal_imprint(imprint)->void:
 	for p in get_property_list():
 		if p.usage & PROPERTY_USAGE_SCRIPT_VARIABLE and p.usage & PROPERTY_USAGE_STORAGE:
 			if imprint.has(p.name):
